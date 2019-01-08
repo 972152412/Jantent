@@ -31,19 +31,19 @@ public class ScheduleTask {
     @Value("${spring.mail.username}")
     private String mailTo;
 
-    @Scheduled(fixedRate = 86400000)
-    public void process(){
+    @Scheduled(initialDelay = 86400000, fixedRate = 86400000)   //第一次延迟86400秒后执行，之后按fixedRate的规则每86400秒执行一次
+    public void process() {
         StringBuffer result = new StringBuffer();
         long totalMemory = Runtime.getRuntime().totalMemory();
-        result.append("使用的总内存为："+totalMemory/(1024*1024)+"MB").append("\n");
-        result.append("内存使用率为："+getMemery()).append("\n");
-        List<LogVo> logVoList = logService.getLogs(0,5);
-        for (LogVo logVo:logVoList){
+        result.append("使用的总内存为：" + totalMemory / (1024 * 1024) + "MB").append("\n");
+        result.append("内存使用率为：" + getMemery()).append("\n");
+        List<LogVo> logVoList = logService.getLogs(0, 5);
+        for (LogVo logVo : logVoList) {
             result.append(" 时间: ").append(DateKit.formatDateByUnixTime(logVo.getCreated()));
             result.append(" 操作: ").append(logVo.getAction());
             result.append(" IP： ").append(logVo.getIp()).append("\n");
         }
-        mailService.sendSimpleEmail(mailTo,"博客系统运行情况",result.toString());
+        mailService.sendSimpleEmail(mailTo, "博客系统运行情况", result.toString());
     }
 
     public static String getMemery() {

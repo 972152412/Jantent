@@ -66,7 +66,7 @@ public class IndexController extends AbstractController {
      * @return
      */
     @GetMapping(value = "/")
-    private String index(HttpServletRequest request, @RequestParam(value = "limit", defaultValue = "10") int limit) {
+    private String index(HttpServletRequest request, @RequestParam(value = "limit", defaultValue = "5") int limit) {
         return this.index(request, 1, limit);
     }
 
@@ -79,7 +79,7 @@ public class IndexController extends AbstractController {
      * @return
      */
     @GetMapping(value = "page/{p}")
-    public String index(HttpServletRequest request, @PathVariable int p, @RequestParam(value = "limit", defaultValue = "10") int limit) {
+    public String index(HttpServletRequest request, @PathVariable int p, @RequestParam(value = "limit", defaultValue = "5") int limit) {
         // 开启thymeleaf缓存，加快访问速度
         p = p < 0 || p > WebConst.MAX_PAGE ? 1 : p;
         PageInfo<ContentVo> articles = contentService.getContents(p, limit);

@@ -137,7 +137,7 @@ public class MetaServiceImpl implements IMetaService{
                 orderby = "count desc, a.mid desc";
             }
             if (limit < 1 || limit > WebConst.MAX_POSTS) {
-                limit = 10;
+                limit = 5;
             }
             Map<String, Object> paraMap = new HashMap<>();
             paraMap.put("type", type);

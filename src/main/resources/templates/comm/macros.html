@@ -3,7 +3,8 @@
 <body>
 <ol class="am-pagination" th:fragment="pageNav(pageInfo, prevText, nextText, prefix)">
     <th:block th:if="${pageInfo.hasPreviousPage}">
-        <li class="am-pagination-prev"><a th:href="@{'/'+${prefix}+'/'+${pageInfo.prePage}}" th:text="${prevText}"></a></li>
+        <li class="am-pagination-prev"><a th:href="@{'/'+${prefix}+'/'+${pageInfo.prePage}}" th:text="${prevText}"></a>
+        </li>
     </th:block>
 
 
@@ -14,7 +15,8 @@
 
 
     <th:block th:if="${pageInfo.hasNextPage}">
-        <li class="am-pagination-next"><a th:href="@{'/'+${prefix}+'/'+${pageInfo.nextPage}}" th:text="${nextText}"></a></li>
+        <li class="am-pagination-next"><a th:href="@{'/'+${prefix}+'/'+${pageInfo.nextPage}}" th:text="${nextText}"></a>
+        </li>
     </th:block>
 
 </ol>
@@ -22,14 +24,17 @@
 <div th:fragment="pageAdminNav(pageInfo)">
     <div class="clearfix">
         <ul class="pagination m-b-5 pull-right">
-            <li th:if="${pageInfo.hasPreviousPage}">
-                <a th:href="@{page=${pageInfo.prePage}}" aria-label="Previous">
-                    <i class="fa fa-angle-left"></i>&nbsp;上一页
-                </a>
-            </li>
+            <th:block th:if="${pageInfo.hasPreviousPage}">
+                <li>
+                    <a th:href="@{'?page='+${pageInfo.prePage}}" aria-label="Previous">
+                        <i class="fa fa-angle-left"></i>&nbsp;上一页
+                    </a>
+                </li>
+            </th:block>
 
             <th:block th:each="nav : ${pageInfo.navigatepageNums}">
-                <li th:class="${nav==pageInfo.pageNum}?'active':''"><a th:href="@{'?page='+${nav}}" th:text="${nav}"></a>
+                <li th:class="${nav==pageInfo.pageNum}?'active':''"><a th:href="@{'?page='+${nav}}"
+                                                                       th:text="${nav}"></a>
                 </li>
             </th:block>
 
