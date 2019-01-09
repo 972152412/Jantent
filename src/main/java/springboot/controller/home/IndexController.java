@@ -226,7 +226,7 @@ public class IndexController extends AbstractController {
             return RestResponseBo.ok();
         } catch (Exception e) {
             String msg = "评论发布失败";
-            return ExceptionHelper.handlerException(logger,msg,e);
+            return ExceptionHelper.handlerException(logger, msg, e);
         }
     }
 
@@ -239,12 +239,12 @@ public class IndexController extends AbstractController {
      * @return
      */
     @GetMapping(value = "category/{keyword}")
-    public String categories(HttpServletRequest request, @PathVariable String keyword, @RequestParam(value = "limit", defaultValue = "12") int limit) {
+    public String categories(HttpServletRequest request, @PathVariable String keyword, @RequestParam(value = "limit", defaultValue = "6") int limit) {
         return this.categories(request, keyword, 1, limit);
     }
 
     @GetMapping(value = "category/{keyword}/{page}")
-    public String categories(HttpServletRequest request, @PathVariable String keyword, @PathVariable int page, @RequestParam(value = "limit", defaultValue = "12") int limit) {
+    public String categories(HttpServletRequest request, @PathVariable String keyword, @PathVariable int page, @RequestParam(value = "limit", defaultValue = "6") int limit) {
         page = page < 0 || page > WebConst.MAX_PAGE ? 1 : page;
         MetaDto metaDto = metaService.getMeta(Types.CATEGORY.getType(), keyword);
         if (null == metaDto) {
@@ -287,12 +287,12 @@ public class IndexController extends AbstractController {
      * 自定义页面,如关于的页面
      */
     @GetMapping(value = "/{pagename}")
-    public String page(@PathVariable String pagename, HttpServletRequest request) {
+    public String page(HttpServletRequest request, @PathVariable String pagename) {
         ContentVo contents = contentService.getContents(pagename);
         if (null == contents) {
             return this.render_404();
         }
-        if (contents.getAllowComment()) {
+        if (contents.getAllowComment() != null) {
             String cp = request.getParameter("cp");
             if (StringUtils.isBlank(cp)) {
                 cp = "1";
@@ -313,12 +313,12 @@ public class IndexController extends AbstractController {
      * @return
      */
     @GetMapping(value = "search/{keyword}")
-    public String search(HttpServletRequest request, @PathVariable String keyword, @RequestParam(value = "limit", defaultValue = "12") int limit) {
+    public String search(HttpServletRequest request, @PathVariable String keyword, @RequestParam(value = "limit", defaultValue = "6") int limit) {
         return this.search(request, keyword, 1, limit);
     }
 
     @GetMapping(value = "search/{keyword}/{page}")
-    public String search(HttpServletRequest request, @PathVariable String keyword, @PathVariable int page, @RequestParam(value = "limit", defaultValue = "12") int limit) {
+    public String search(HttpServletRequest request, @PathVariable String keyword, @PathVariable int page, @RequestParam(value = "limit", defaultValue = "6") int limit) {
         page = page < 0 || page > WebConst.MAX_PAGE ? 1 : page;
         PageInfo<ContentVo> articles = contentService.getArticles(keyword, page, limit);
         request.setAttribute("articles", articles);
@@ -334,7 +334,7 @@ public class IndexController extends AbstractController {
      * @return
      */
     @GetMapping(value = "tag/{name}")
-    public String tags(HttpServletRequest request, @PathVariable String name, @RequestParam(value = "limit", defaultValue = "12") int limit) {
+    public String tags(HttpServletRequest request, @PathVariable String name, @RequestParam(value = "limit", defaultValue = "6") int limit) {
         return this.tags(request, name, 1, limit);
     }
 
@@ -348,7 +348,7 @@ public class IndexController extends AbstractController {
      * @return
      */
     @GetMapping(value = "tag/{name}/{page}")
-    public String tags(HttpServletRequest request, @PathVariable String name, @PathVariable int page, @RequestParam(value = "limit", defaultValue = "12") int limit) {
+    public String tags(HttpServletRequest request, @PathVariable String name, @PathVariable int page, @RequestParam(value = "limit", defaultValue = "6") int limit) {
 
         page = page < 0 || page > WebConst.MAX_PAGE ? 1 : page;
 //        对于空格的特殊处理

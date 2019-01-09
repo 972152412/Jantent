@@ -176,8 +176,8 @@ public class SiteServiceImpl implements ISiteService {
                 int end = DateKit.getUnixTimeByDate(DateKit.dateAdd(DateKit.INTERVAL_MONTH, sd, 1)) - 1;
                 criteria.andCreatedGreaterThan(start);
                 criteria.andCreatedLessThan(end);
-                List<ContentVo> contentss = contentDao.selectByExample(example);
-                archive.setArticles(contentss);
+                List<ContentVo> contents = contentDao.selectByExample(example);
+                archive.setArticles(contents);
             });
         }
         return archiveBoList;
