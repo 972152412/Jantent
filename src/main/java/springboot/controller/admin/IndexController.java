@@ -61,7 +61,7 @@ public class IndexController extends AbstractController {
         List<ContentVo> contentVos = siteService.recentContents(5);
         List<CommentVo> commentVos = siteService.recentComments(5);
         StaticticsBo staticticsBo = siteService.getStatistics();
-        //取最新的15条日志
+        //取最新的5条日志
         List<LogVo> logVos = logService.getLogs(1, 5);
         request.setAttribute("comments", commentVos);
         request.setAttribute("articles", contentVos);
@@ -76,7 +76,9 @@ public class IndexController extends AbstractController {
     }
 
     @GetMapping(value = "logout")
-    public String logout() {
+    public String logout(HttpSession session) {
+        // 销毁session
+        session.invalidate();
         return "admin/login";
     }
 

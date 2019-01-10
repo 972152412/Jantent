@@ -51,7 +51,7 @@ public class ContentServcieImpl implements IContentService {
     private RedisTemplate redisTemplate;
 
     @Autowired
-    private ValueOperations<String,Object> valueOperations;
+    private ValueOperations<String, Object> valueOperations;
 
     @Autowired
     private RedisService redisService;
@@ -110,7 +110,7 @@ public class ContentServcieImpl implements IContentService {
         // 先从redis中读取文章信息
         String contentKey = RedisKeyUtil.getKey(ContentKey.TABLE_NAME, ContentKey.MAJOR_KEY, id);
         ContentVo contentVo = (ContentVo) valueOperations.get(contentKey);
-        if (contentVo == null){
+        if (contentVo == null) {
             if (StringUtils.isNotBlank(id)) {
                 if (Tools.isNumber(id)) {
                     contentVo = contentDao.selectByPrimaryKey(Integer.valueOf(id));
@@ -127,8 +127,8 @@ public class ContentServcieImpl implements IContentService {
                         throw new TipException("query content by id and return is not one");
                     }
                     contentVo = contentVos.get(0);
-                    valueOperations.set(contentKey,contentVo);
-                    redisService.expireKey(contentKey,ContentKey.LIVE_TIME, TimeUnit.HOURS);
+                    valueOperations.set(contentKey, contentVo);
+                    redisService.expireKey(contentKey, ContentKey.LIVE_TIME, TimeUnit.HOURS);
                     return contentVo;
                 }
             }
@@ -179,6 +179,9 @@ public class ContentServcieImpl implements IContentService {
         if (null != contentVo) {
             contentDao.deleteByPrimaryKey(cid);
             relationshipService.deleteById(cid, null);
+            // 更新缓存
+            String contentKey = RedisKeyUtil.getKey(ContentKey.TABLE_NAME, ContentKey.MAJOR_KEY, cid + "");
+            redisService.deleteKey(contentKey);
         }
     }
 
@@ -196,7 +199,7 @@ public class ContentServcieImpl implements IContentService {
 
         contentDao.updateByPrimaryKeySelective(contents);
         // 更新缓存
-        String contentKey  = RedisKeyUtil.getKey(ContentKey.TABLE_NAME, ContentKey.MAJOR_KEY, contents.getSlug());
+        String contentKey = RedisKeyUtil.getKey(ContentKey.TABLE_NAME, ContentKey.MAJOR_KEY, cid + "");
         redisService.deleteKey(contentKey);
 
         relationshipService.deleteById(cid, null);
@@ -213,7 +216,7 @@ public class ContentServcieImpl implements IContentService {
         contentDao.updateByExampleSelective(contentVo, example);
     }
 
-    private void  checkContent(ContentVo contents) throws TipException{
+    private void checkContent(ContentVo contents) throws TipException {
         if (null == contents) {
             throw new TipException("文章对象不能为空");
         }
