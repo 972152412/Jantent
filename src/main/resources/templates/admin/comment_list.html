@@ -45,9 +45,15 @@
                                         </th:block>
                                     </td>
                                     <td>
+                                        <th:block th:if="${comment.status == 'approved'}">
+                                            <a href="javascript:void(0)"
+                                               th:onclick="'withdraw('+${comment.coid}+');'"
+                                               class="btn btn-success btn-sm waves-effect waves-light m-b-5"><i
+                                                    class="fa fa-check-square-o"></i> <span>撤回</span></a>
+                                        </th:block>
                                         <th:block th:if="${comment.status == 'not_audit'}">
                                             <a href="javascript:void(0)"
-                                               th:onclick="'updateStatus('+${comment.coid}+');'"
+                                               th:onclick="'pass('+${comment.coid}+');'"
                                                class="btn btn-success btn-sm waves-effect waves-light m-b-5"><i
                                                     class="fa fa-check-square-o"></i> <span>通过</span></a>
                                         </th:block>
@@ -91,7 +97,7 @@
         });
     }
 
-    function updateStatus(coid) {
+    function pass(coid) {
         tale.alertConfirm({
             title: '确定审核通过吗?',
             then: function () {
@@ -102,13 +108,33 @@
                         if (result && result.success) {
                             tale.alertOkAndReload('评论状态设置成功');
                         } else {
-                            tale.alertError(result.msg || '评论设置失败');
+                            tale.alertError(result.msg || '评论状态设置失败');
                         }
                     }
                 });
             }
         });
     }
+
+    function withdraw(coid) {
+        tale.alertConfirm({
+            title: '确定撤回改评论吗?',
+            then: function () {
+                tale.post({
+                    url: '/admin/comments/status',
+                    data: {coid: coid, status: "not_audit"},
+                    success: function (result) {
+                        if (result && result.success) {
+                            tale.alertOkAndReload('评论状态设置成功');
+                        } else {
+                            tale.alertError(result.msg || '评论状态设置失败');
+                        }
+                    }
+                });
+            }
+        });
+    }
+
     /*]]>*/
 </script>
 </body>

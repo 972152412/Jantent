@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 /**
- * 评论模块
+ * 评论管理
  *
  * @author tangj
  * @date 2018/1/27 17:05
@@ -38,7 +38,7 @@ public class CommentController extends AbstractController {
 
     @GetMapping(value = "")
     public String index(@RequestParam(value = "page", defaultValue = "1") int page,
-                        @RequestParam(value = "limit", defaultValue = "15") int limit, HttpServletRequest request) {
+                        @RequestParam(value = "limit", defaultValue = "8") int limit, HttpServletRequest request) {
         UserVo users = this.user(request);
         CommentVoExample commentVoExample = new CommentVoExample();
         commentVoExample.setOrderByClause("coid desc");
@@ -70,16 +70,22 @@ public class CommentController extends AbstractController {
     @ResponseBody
     @Transactional(rollbackFor = TipException.class)
     public RestResponseBo updateStatus(@RequestParam Integer coid, @RequestParam String status) {
-        try {
-            CommentVo comments = new CommentVo();
-            comments.setCoid(coid);
-            comments.setStatus(status);
-            commentServcie.update(comments);
-        } catch (Exception e) {
-            String msg = "操作失败";
-            return ExceptionHelper.handlerException(logger, msg, e);
+        if (StringUtils.isBlank(status)) {
+            return RestResponseBo.fail("评论状态不能为空");
+        } else {
+            try {
+                CommentVo comments = commentServcie.getCommentById(coid);
+                if (null == comments) {
+                    return RestResponseBo.fail("不存在该评论");
+                }
+                comments.setStatus(status);
+                commentServcie.update(comments);
+            } catch (Exception e) {
+                String msg = "操作失败";
+                return ExceptionHelper.handlerException(logger, msg, e);
+            }
+            return RestResponseBo.ok();
         }
-        return RestResponseBo.ok();
     }
 
     @PostMapping(value = "")

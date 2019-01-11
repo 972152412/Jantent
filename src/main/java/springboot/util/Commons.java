@@ -21,18 +21,18 @@ import java.util.regex.Pattern;
  * @author tangj
  * @date 2018/1/21 21:56
  */
- @Component
+@Component
 public class Commons {
 
-     private static ISiteService siteService;
+    private static ISiteService siteService;
 
-     public static String THEME = "themes/jantent";
+    public static String THEME = "themes/jantent";
 
-     private static final List EMPTY = new ArrayList(0);
+    private static final List EMPTY = new ArrayList(0);
 
-     public static void setSiteService(ISiteService ss){
-         siteService = ss;
-     }
+    public static void setSiteService(ISiteService ss) {
+        siteService = ss;
+    }
 
 
     /**
@@ -60,10 +60,11 @@ public class Commons {
 
     /**
      * 在管理员页面退出登录返回到登录界面
+     *
      * @return
      */
     public static String site_login() {
-        return "admin/login";
+        return "/admin/login";
     }
 
     /**
@@ -77,8 +78,8 @@ public class Commons {
     }
 
     /**
-     *
      * 网站标题
+     *
      * @return
      */
     public static String site_title() {
@@ -259,7 +260,7 @@ public class Commons {
      * 截取文章摘要
      *
      * @param article 文章
-     * @param len   要截取文字的个数
+     * @param len     要截取文字的个数
      * @return
      */
     public static String intro(ContentVo article, int len) {
@@ -297,7 +298,7 @@ public class Commons {
      * @return
      */
     public static String show_thumb(ContentVo contents) {
-        if (StringUtils.isNotBlank(contents.getThumbimg())){
+        if (StringUtils.isNotBlank(contents.getThumbimg())) {
             return contents.getThumbimg();
         }
         int cid = contents.getCid();
@@ -431,10 +432,11 @@ public class Commons {
         return ICONS[cid % ICONS.length];
     }
 
-    public static String showCategoryUrl(MetaDto metaDto){
-        String url = "/category/"+metaDto.getName();
+    public static String showCategoryUrl(MetaDto metaDto) {
+        String url = "/category/" + metaDto.getName();
         return url;
     }
+
     /**
      * 获取社交的链接地址
      *

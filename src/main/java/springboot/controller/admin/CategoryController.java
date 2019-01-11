@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * 分类标签管理
+ * 分类/标签管理
  *
  * @author tangj
  * @date 2018/1/31 22:56

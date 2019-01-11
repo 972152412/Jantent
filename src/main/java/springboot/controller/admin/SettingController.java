@@ -121,7 +121,6 @@ public class SettingController extends AbstractController {
         }
         // 要过过滤的黑名单列表
         if (StringUtils.isNotBlank(block_ips)) {
-            String url = Types.BLOCK_IPS.getType();
             optionService.insertOption(Types.BLOCK_IPS.getType(), block_ips);
             WebConst.BLOCK_IPS.addAll(Arrays.asList(block_ips.split(",")));
         } else {

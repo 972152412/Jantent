@@ -5,7 +5,7 @@ import springboot.modal.vo.AttachVo;
 
 public interface IAttachService {
     /**
-     * 分页查询附件
+     * 分页查询文件
      *
      * @param page
      * @param limit
@@ -14,7 +14,7 @@ public interface IAttachService {
     PageInfo<AttachVo> getAttachs(Integer page, Integer limit);
 
     /**
-     * 保存附件
+     * 保存文件
      *
      * @param fname
      * @param fkey
@@ -24,7 +24,7 @@ public interface IAttachService {
     void save(String fname, String fkey, String ftype, Integer author);
 
     /**
-     * 根据附件Id,查询附件
+     * 根据文件Id,查询文件
      *
      * @param id
      * @return
@@ -32,7 +32,7 @@ public interface IAttachService {
     AttachVo selectById(Integer id);
 
     /**
-     * 删除附件
+     * 删除文件
      *
      * @param id
      */

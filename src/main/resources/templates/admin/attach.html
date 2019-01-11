@@ -70,7 +70,7 @@
                             <div class="row">
                                 <div class="col-md-4 text-center">
                                     <div class="alert alert-warning">
-                                        目前还没有一个附件呢，你可以上传试试!
+                                        目前还没有一个文件呢，你可以上传试试!
                                     </div>
                                 </div>
                             </div>
@@ -148,16 +148,16 @@
 
     function delAttach(id) {
         tale.alertConfirm({
-            title: '确定删除该附件吗?',
+            title: '确定删除该文件吗?',
             then: function () {
                 tale.post({
                     url: '/admin/attach/delete',
                     data: {id: id},
                     success: function (result) {
                         if (result && result.success) {
-                            tale.alertOkAndReload('附件删除成功');
+                            tale.alertOkAndReload('文件删除成功');
                         } else {
-                            tale.alertError(result.msg || '附件删除失败');
+                            tale.alertError(result.msg || '文件删除失败');
                         }
                     }
                 });

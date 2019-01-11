@@ -25,7 +25,7 @@ import java.util.Map;
  * @date 2018/1/24 21:59
  */
 @Service
-public class MetaServiceImpl implements IMetaService{
+public class MetaServiceImpl implements IMetaService {
 
     @Resource
     private MetaVoMapper metaDao;
@@ -112,7 +112,7 @@ public class MetaServiceImpl implements IMetaService{
             List<MetaVo> metaVos = metaDao.selectByExample(metaVoExample);
             MetaVo metas;
             if (metaVos.size() != 0) {
-                throw new TipException("已经存在该项");
+                throw new TipException("已经存在该分类");
             } else {
                 metas = new MetaVo();
                 metas.setName(name);
@@ -121,7 +121,7 @@ public class MetaServiceImpl implements IMetaService{
                     metas.setMid(mid);
                     metaDao.updateByPrimaryKeySelective(metas);
 //                    更新原有文章的categories
-                    contentService.updateCategory(original.getName(),name);
+                    contentService.updateCategory(original.getName(), name);
                 } else {
                     metas.setType(type);
                     metaDao.insertSelective(metas);

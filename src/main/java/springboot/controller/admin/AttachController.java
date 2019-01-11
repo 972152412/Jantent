@@ -32,7 +32,7 @@ import java.util.List;
 
 
 /**
- * 附件管理
+ * 文件管理
  *
  * @author tangj
  * @date 2018/1/31 23:14
@@ -51,7 +51,7 @@ public class AttachController extends AbstractController {
     private ILogService logService;
 
     /**
-     * 附件页面
+     * 文件页面
      *
      * @param request
      * @param page
@@ -64,12 +64,12 @@ public class AttachController extends AbstractController {
         PageInfo<AttachVo> attachPagination = attachService.getAttachs(page, limit);
         request.setAttribute("attachs", attachPagination);
         request.setAttribute(Types.ATTACH_URL.getType(), Commons.site_option(Types.ATTACH_URL.getType()));
-        request.setAttribute("max_file_size", WebConst.MAX_TEXT_COUNT / 1024);
+        request.setAttribute("max_file_size", WebConst.MAX_FILE_SIZE / 1024);
         return "admin/attach";
     }
 
     /**
-     * 上次附件post
+     * 上传文件post
      *
      * @param request
      * @param multipartFiles
@@ -113,13 +113,13 @@ public class AttachController extends AbstractController {
         try {
             AttachVo attach = attachService.selectById(id);
             if (null == attach) {
-                return RestResponseBo.fail("不存在该附件");
+                return RestResponseBo.fail("不存在该文件");
             }
             attachService.deleteById(id);
             new File(CLASSPATH + attach.getFkey()).delete();
             logService.insertLog(LogActions.DEL_ATTACH.getAction(), attach.getFkey(), request.getRemoteAddr(), this.getUid(request));
         } catch (Exception e) {
-            String msg = "附件删除失败";
+            String msg = "文件删除失败";
             return ExceptionHelper.handlerException(logger, msg, e);
         }
         return RestResponseBo.ok();

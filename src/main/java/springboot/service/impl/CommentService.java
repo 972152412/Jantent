@@ -82,7 +82,7 @@ public class CommentService implements ICommentService {
         if (null != cid) {
             PageHelper.startPage(page, limit);
             CommentVoExample commentVoExample = new CommentVoExample();
-            commentVoExample.createCriteria().andCidEqualTo(cid).andParentEqualTo(0);
+            commentVoExample.createCriteria().andCidEqualTo(cid).andStatusEqualTo("approved").andParentEqualTo(0);
             commentVoExample.setOrderByClause("coid desc");
             List<CommentVo> parents = commentDao.selectByExampleWithBLOBs(commentVoExample);
             PageInfo<CommentVo> commentPaginator = new PageInfo<>(parents);
@@ -133,7 +133,9 @@ public class CommentService implements ICommentService {
 
     @Override
     public void update(CommentVo comments) {
-
+        // 检查评论输入数据
+        checkComment(comments);
+        commentDao.updateByPrimaryKey(comments);
     }
 
 
