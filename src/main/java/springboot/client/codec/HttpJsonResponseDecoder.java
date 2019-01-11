@@ -8,8 +8,8 @@ import springboot.server.codec.HttpJsonResponse;
 import java.util.List;
 
 /**
- * @author tangj
- * @date 2018/4/15 21:48
+ * @author caolihui
+ * @date 2018/12/15 21:48
  */
 public class HttpJsonResponseDecoder extends AbstractHttpJsonDecoder<FullHttpResponse> {
 
@@ -23,6 +23,6 @@ public class HttpJsonResponseDecoder extends AbstractHttpJsonDecoder<FullHttpRes
 
     @Override
     protected void decode(ChannelHandlerContext ctx, FullHttpResponse msg, List<Object> out) throws Exception {
-        out.add(new HttpJsonResponse(msg,jsonDecode(ctx,msg.content())));
+        out.add(new HttpJsonResponse(msg, jsonDecode(ctx, msg.content())));
     }
 }

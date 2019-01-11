@@ -12,8 +12,8 @@ import java.util.List;
 /**
  * 站点服务
  *
- * @author tangj
- * @date 2018/1/23 11:43
+ * @author caolihui
+ * @date 2018/12/23 11:43
  */
 public interface ISiteService {
     /**

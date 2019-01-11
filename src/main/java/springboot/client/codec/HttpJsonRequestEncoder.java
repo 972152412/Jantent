@@ -10,8 +10,8 @@ import java.net.InetAddress;
 import java.util.List;
 
 /**
- * @author tangj
- * @date 2018/4/15 21:46
+ * @author caolihui
+ * @date 2018/12/15 21:46
  */
 public class HttpJsonRequestEncoder extends AbstractHttpJsonEncoder<HttpJsonRequest> {
 

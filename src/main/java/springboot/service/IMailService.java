@@ -1,8 +1,8 @@
 package springboot.service;
 
 /**
- * @author tangj
- * @date 2018/5/3 22:06
+ * @author caolihui
+ * @date 2019/1/3 22:06
  */
 public interface IMailService {
     /**

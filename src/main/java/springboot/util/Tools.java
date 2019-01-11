@@ -13,8 +13,8 @@ import java.nio.channels.FileChannel;
 import java.util.Random;
 
 /**
- * @author tangj
- * @date 2018/1/21 20:40
+ * @author caolihui
+ * @date 2018/12/21 20:40
  */
 public class Tools {
     private static final Random random = new Random();

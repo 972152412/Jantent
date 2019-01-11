@@ -5,7 +5,7 @@ import springboot.exception.TipException;
 import springboot.modal.bo.RestResponseBo;
 
 /**
- * @author janti
+ * @author caolihui
  */
 public class ExceptionHelper {
     /**

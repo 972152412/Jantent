@@ -8,7 +8,6 @@ import springboot.modal.vo.MetaVo;
 /**
  * 后台公共函数
  * <p>
- *
  */
 @Component
 public final class AdminCommons {

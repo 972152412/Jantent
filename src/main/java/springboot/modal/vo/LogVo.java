@@ -3,10 +3,10 @@ package springboot.modal.vo;
 import java.io.Serializable;
 
 /**
- * @author tangj
- * @date 2018/1/21 11:14
+ * @author caolihui
+ * @date 2018/12/21 11:14
  */
-public class LogVo implements Serializable{
+public class LogVo implements Serializable {
     /**
      * 日志主键
      */

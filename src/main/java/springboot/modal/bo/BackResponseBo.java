@@ -3,8 +3,8 @@ package springboot.modal.bo;
 import java.io.Serializable;
 
 /**
- * @author tangj
- * @date 2018/1/23 11:49
+ * @author caolihui
+ * @date 2018/12/15 11:49
  */
 public class BackResponseBo implements Serializable {
     private String attachPath;

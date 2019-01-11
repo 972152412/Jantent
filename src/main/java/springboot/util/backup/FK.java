@@ -1,8 +1,8 @@
 package springboot.util.backup;
 
 /**
- * @author tangj
- * @date 2018/1/23 20:58
+ * @author caolihui
+ * @date 2018/12/23 20:58
  */
 public class FK {
     private String column;

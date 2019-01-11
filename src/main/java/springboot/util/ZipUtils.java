@@ -7,8 +7,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 /**
- * @author tangj
- * @date 2018/1/23 14:03
+ * @author caolihui
+ * @date 2018/12/23 14:03
  */
 public class ZipUtils {
     public static void zipFolder(String srcFolder, String destZipFile) throws Exception {
@@ -50,11 +50,11 @@ public class ZipUtils {
         }
     }
 
-    public static void zipFile(String filePath, String zipPath) throws Exception{
+    public static void zipFile(String filePath, String zipPath) throws Exception {
         byte[] buffer = new byte[1024];
         FileOutputStream fos = new FileOutputStream(zipPath);
         ZipOutputStream zos = new ZipOutputStream(fos);
-        ZipEntry ze= new ZipEntry("spy.log");
+        ZipEntry ze = new ZipEntry("spy.log");
         zos.putNextEntry(ze);
         FileInputStream in = new FileInputStream(filePath);
         int len;

@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author tangj
- * @date 2018/1/21 22:27
+ * @author caolihui
+ * @date 2018/12/18 22:27
  */
 @Component
 public class BaseInterceptor implements HandlerInterceptor {
@@ -75,8 +75,8 @@ public class BaseInterceptor implements HandlerInterceptor {
             modelAndView.setViewName("comm/ipban");
         }
 
-        request.setAttribute("commons",commons);
-        request.setAttribute("adminCommons",adminCommons);
+        request.setAttribute("commons", commons);
+        request.setAttribute("adminCommons", adminCommons);
     }
 
     @Override

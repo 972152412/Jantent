@@ -3,8 +3,8 @@ package springboot.modal.bo;
 /**
  * rest返回对象
  *
- * @author tangj
- * @date 2018/1/21 14:10
+ * @author caolihui
+ * @date 2018/12/14 14:10
  */
 public class RestResponseBo<T> {
     /**

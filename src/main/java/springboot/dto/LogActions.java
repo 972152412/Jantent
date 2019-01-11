@@ -2,7 +2,7 @@ package springboot.dto;
 
 /**
  * 日志表的action字段
- * Created by tangj on 2017/3/4.
+ * Created by caolihui on 2018/12/14
  */
 public enum LogActions {
 

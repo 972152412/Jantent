@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 抽象类controller
  * 用于统一渲染页面url，页面名称，获取session中的用户
- * @author tangj
- * @date 2018/1/21 11:25
+ *
+ * @author caolihui
+ * @date 2018/12/21 11:25
  */
 public abstract class AbstractController {
     public static String THEME = "themes/jantent";
@@ -37,11 +38,11 @@ public abstract class AbstractController {
         return this;
     }
 
-    public UserVo user(HttpServletRequest request){
+    public UserVo user(HttpServletRequest request) {
         return MyUtils.getLoginUser(request);
     }
 
-    public Integer getUid(HttpServletRequest request){
+    public Integer getUid(HttpServletRequest request) {
         return this.user(request).getUid();
     }
 

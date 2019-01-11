@@ -13,11 +13,11 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @author tangj
- * @date 2018/1/21 20:52
+ * @author caolihui
+ * @date 2018/12/21 20:52
  */
 @Service
-public class LogServiceImpl implements ILogService{
+public class LogServiceImpl implements ILogService {
 
     @Resource
     private LogVoMapper logDao;

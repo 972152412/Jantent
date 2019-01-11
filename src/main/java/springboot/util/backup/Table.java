@@ -1,8 +1,8 @@
 package springboot.util.backup;
 
 /**
- * @author tangj
- * @date 2018/1/23 20:59
+ * @author caolihui
+ * @date 2018/12/23 20:59
  */
 public class Table {
     private String name;
@@ -32,7 +32,7 @@ public class Table {
         return "Table [name=" + name + "]";
     }
 
-    public boolean isReferenced(Table referenceTable){
+    public boolean isReferenced(Table referenceTable) {
         return constraints.isReferenced(referenceTable);
     }
 }

@@ -11,15 +11,15 @@ import springboot.client.handler.ClientHandler;
 import springboot.modal.vo.UserVo;
 
 
-public class HttpClientInitializer extends ChannelInitializer<SocketChannel>{
+public class HttpClientInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
-        ch.pipeline().addLast("http-decoder",new HttpResponseDecoder());
-        ch.pipeline().addLast("http-aggregator",new HttpObjectAggregator(65536));
-        ch.pipeline().addLast("json-decoder",new HttpJsonResponseDecoder(UserVo.class));
+        ch.pipeline().addLast("http-decoder", new HttpResponseDecoder());
+        ch.pipeline().addLast("http-aggregator", new HttpObjectAggregator(65536));
+        ch.pipeline().addLast("json-decoder", new HttpJsonResponseDecoder(UserVo.class));
 
-        ch.pipeline().addLast("http-encoder",new HttpRequestEncoder());
-        ch.pipeline().addLast("json-encoder",new HttpJsonRequestEncoder());
-        ch.pipeline().addLast("handler",new ClientHandler());
+        ch.pipeline().addLast("http-encoder", new HttpRequestEncoder());
+        ch.pipeline().addLast("json-encoder", new HttpJsonRequestEncoder());
+        ch.pipeline().addLast("handler", new ClientHandler());
     }
 }

@@ -19,22 +19,23 @@ import springboot.server.codec.HttpJsonResponse;
 import javax.annotation.Resource;
 
 /**
- * @author tangj
- * @date 2018/4/15 16:46
+ * @author caolihui
+ * @date 2018/12/15 16:46
  */
-public class HttpServerHandler extends SimpleChannelInboundHandler<HttpJsonRequest>{
+public class HttpServerHandler extends SimpleChannelInboundHandler<HttpJsonRequest> {
 
     @Resource
     private UserVoMapper userDao;
 
-    private static final  Logger logger = LoggerFactory.getLogger(HttpServerHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(HttpServerHandler.class);
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, HttpJsonRequest msg) throws Exception {
         HttpRequest request = msg.getRequest();
-        UserVo user = (UserVo)msg.getBody();
+        UserVo user = (UserVo) msg.getBody();
         userDao.insert(user);
-        logger.info("服务端收到消息"+user);
-        ctx.writeAndFlush(new HttpJsonResponse(null,user));
+        logger.info("服务端收到消息" + user);
+        ctx.writeAndFlush(new HttpJsonResponse(null, user));
     }
 
 

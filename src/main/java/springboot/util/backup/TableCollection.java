@@ -3,18 +3,18 @@ package springboot.util.backup;
 import java.util.ArrayList;
 
 /**
- * @author tangj
- * @date 2018/1/23 21:02
+ * @author caolihui
+ * @date 2018/12/23 21:02
  */
-public class TableCollection extends ArrayList<Table>{
+public class TableCollection extends ArrayList<Table> {
     /**
      * Sort tables according to constraints
      */
-    public void sort(){
-        for(int i = 0 ; i < size(); ){
+    public void sort() {
+        for (int i = 0; i < size(); ) {
             boolean corrupted = false;
-            for(int j = i + 1; j < size(); j++){
-                if(get(i).isReferenced(get(j))){
+            for (int j = i + 1; j < size(); j++) {
+                if (get(i).isReferenced(get(j))) {
                     Table table = get(i);
                     remove(table);
                     add(table);
@@ -22,7 +22,7 @@ public class TableCollection extends ArrayList<Table>{
                     break;
                 }
             }
-            if(!corrupted){
+            if (!corrupted) {
                 i++;
             }
         }

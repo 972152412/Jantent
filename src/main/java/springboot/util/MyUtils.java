@@ -33,8 +33,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author tangj
- * @date 2018/1/21 19:48
+ * @author caolihui
+ * @date 2018/12/21 19:48
  */
 public class MyUtils {
 
@@ -238,7 +238,7 @@ public class MyUtils {
             return "";
         }
         List<Extension> extensions = Arrays.asList(TablesExtension.create());
-        Parser          parser     = Parser.builder().extensions(extensions).build();
+        Parser parser = Parser.builder().extensions(extensions).build();
         Node document = parser.parse(markdown);
         HtmlRenderer renderer = HtmlRenderer.builder()
                 .attributeProviderFactory(context -> new LinkAttributeProvider())

@@ -29,8 +29,8 @@ import java.util.List;
 /**
  * 文章管理
  *
- * @author tangj
- * @date 2018/1/24 21:01
+ * @author caolihui
+ * @date 2018/12/24 21:01
  */
 @Controller
 @RequestMapping("/admin/article")

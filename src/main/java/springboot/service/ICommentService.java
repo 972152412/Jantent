@@ -6,8 +6,8 @@ import springboot.modal.vo.CommentVo;
 import springboot.modal.vo.CommentVoExample;
 
 /**
- * @author tangj
- * @date 2018/1/28 15:46
+ * @author caolihui
+ * @date 2018/12/28 15:46
  */
 public interface ICommentService {
 

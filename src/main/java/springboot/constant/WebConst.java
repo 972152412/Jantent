@@ -10,7 +10,7 @@ import java.util.Set;
 /**
  * web常量
  *
- * @author tangj
+ * @author caolihui
  */
 @Component
 public class WebConst {

@@ -3,8 +3,8 @@ package springboot.service;
 import springboot.modal.vo.UserVo;
 
 /**
- * @author tangj
- * @date 2018/1/21 14:22
+ * @author caolihui
+ * @date 2018/12/21 14:22
  */
 public interface IUserService {
     /**
@@ -18,6 +18,7 @@ public interface IUserService {
 
     /**
      * 通过uid查找对象
+     *
      * @param uid
      * @return
      */
@@ -25,6 +26,7 @@ public interface IUserService {
 
     /**
      * 用戶登录
+     *
      * @param username
      * @param password
      * @return
@@ -33,6 +35,7 @@ public interface IUserService {
 
     /**
      * 根据主键更新user对象
+     *
      * @param userVo
      * @return
      */

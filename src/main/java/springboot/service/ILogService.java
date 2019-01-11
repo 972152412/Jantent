@@ -5,8 +5,8 @@ import springboot.modal.vo.LogVo;
 import java.util.List;
 
 /**
- * @author tangj
- * @date 2018/1/21 20:50
+ * @author caolihui
+ * @date 2018/12/21 20:50
  */
 public interface ILogService {
     /**
@@ -17,7 +17,8 @@ public interface ILogService {
     void insertLog(LogVo logVo);
 
     /**
-     *  保存
+     * 保存
+     *
      * @param action
      * @param data
      * @param ip
@@ -27,7 +28,8 @@ public interface ILogService {
 
     /**
      * 获取日志分页
-     * @param page 当前页
+     *
+     * @param page  当前页
      * @param limit 每页条数
      * @return 日志
      */

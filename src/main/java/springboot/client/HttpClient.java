@@ -11,7 +11,7 @@ import springboot.client.handler.HttpClientInitializer;
 import java.net.InetSocketAddress;
 
 public class HttpClient {
-    public void start() throws Exception{
+    public void start() throws Exception {
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap bootstrap = new Bootstrap();
@@ -24,13 +24,13 @@ public class HttpClient {
             ChannelFuture future = bootstrap.connect(new InetSocketAddress("127.0.0.1", 3560));
             // 当客户端链路关闭
             future.channel().closeFuture().sync();
-        }finally {
+        } finally {
             // 优雅退出，释放NIO线程组
             group.shutdownGracefully();
         }
     }
 
-    public static void main(String args[])throws Exception{
+    public static void main(String args[]) throws Exception {
         new HttpClient().start();
     }
 }

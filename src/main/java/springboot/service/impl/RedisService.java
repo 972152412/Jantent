@@ -27,8 +27,6 @@ public class RedisService {
     public static final long NOT_EXPIRE = -1;
 
 
-
-
     public boolean existsKey(String key) {
         return redisTemplate.hasKey(key);
     }

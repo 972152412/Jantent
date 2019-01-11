@@ -3,10 +3,10 @@ package springboot.modal.bo;
 import java.io.Serializable;
 
 /**
- * @author tangj
- * @date 2018/1/23 11:55
+ * @author caolihui
+ * @date 2018/12/10 11:55
  */
-public class StaticticsBo implements Serializable{
+public class StaticticsBo implements Serializable {
     private Long articles;
     private Long comments;
     private Long links;

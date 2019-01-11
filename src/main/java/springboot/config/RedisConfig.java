@@ -15,7 +15,7 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
- * @author janti
+ * @author caolihui
  * reids 相关bean的配置
  */
 @Configuration
@@ -24,6 +24,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      * 选择redis作为默认缓存工具
+     *
      * @param redisTemplate
      * @return
      */
@@ -35,6 +36,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      * retemplate相关配置
+     *
      * @param factory
      * @return
      */

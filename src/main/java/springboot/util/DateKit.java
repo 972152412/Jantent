@@ -7,8 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * @author tangj
- * @date 2018/1/21 21:31
+ * @author caolihui
+ * @date 2018/12/21 21:31
  */
 public class DateKit {
     public static final int INTERVAL_DAY = 1;
@@ -43,15 +43,16 @@ public class DateKit {
 
     /**
      * 生成日期加时间的消息
+     *
      * @param unixTime
      * @return
      */
-    public static String formatDateByUnixTime(long unixTime){
-        return dateFormat(new Date(unixTime * 1000L),"yyyy-MM-dd HH:mm:ss");
+    public static String formatDateByUnixTime(long unixTime) {
+        return dateFormat(new Date(unixTime * 1000L), "yyyy-MM-dd HH:mm:ss");
     }
 
     public static long DaysBetween(Date date1, Date date2) {
-        if(date2 == null) {
+        if (date2 == null) {
             date2 = new Date();
         }
 
@@ -73,7 +74,7 @@ public class DateKit {
     }
 
     public static Date dateFormat(String date, String dateFormat) {
-        if(date == null) {
+        if (date == null) {
             return null;
         } else {
             SimpleDateFormat format = new SimpleDateFormat(dateFormat);
@@ -91,9 +92,9 @@ public class DateKit {
     }
 
     public static String dateFormat(Date date, String dateFormat) {
-        if(date != null) {
+        if (date != null) {
             SimpleDateFormat format = new SimpleDateFormat(dateFormat);
-            if(date != null) {
+            if (date != null) {
                 return format.format(date);
             }
         }
@@ -102,15 +103,15 @@ public class DateKit {
     }
 
     public static String birthdayFormat(Date date) {
-        if(date != null) {
+        if (date != null) {
             SimpleDateFormat format = null;
-            if(date.before(tempDate)) {
+            if (date.before(tempDate)) {
                 format = new SimpleDateFormat("MM-dd");
             } else {
                 format = new SimpleDateFormat("yyyy-MM-dd");
             }
 
-            if(date != null) {
+            if (date != null) {
                 return format.format(date);
             }
         }
@@ -159,7 +160,7 @@ public class DateKit {
 
     public static String getDaysAgo(int interval) {
         Date date = new Date();
-        long time = date.getTime() / 1000L - (long)(interval * 60 * 60 * 24);
+        long time = date.getTime() / 1000L - (long) (interval * 60 * 60 * 24);
         date.setTime(time * 1000L);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -188,9 +189,9 @@ public class DateKit {
 
     public static Date getBeforeDate(String range) {
         Calendar today = Calendar.getInstance();
-        if("week".equalsIgnoreCase(range)) {
+        if ("week".equalsIgnoreCase(range)) {
             today.add(4, -1);
-        } else if("month".equalsIgnoreCase(range)) {
+        } else if ("month".equalsIgnoreCase(range)) {
             today.add(2, -1);
         } else {
             today.clear();
@@ -238,7 +239,7 @@ public class DateKit {
         int theYear = today.get(1);
         ArrayList list = new ArrayList();
 
-        for(int i = before; i >= 0; --i) {
+        for (int i = before; i >= 0; --i) {
             list.add(Integer.valueOf(theYear - i));
         }
 
@@ -247,27 +248,27 @@ public class DateKit {
 
     public static Date dateAdd(int interval, Date date, int n) {
         long time = date.getTime() / 1000L;
-        switch(interval) {
+        switch (interval) {
             case 1:
-                time += (long)(n * 86400);
+                time += (long) (n * 86400);
                 break;
             case 2:
-                time += (long)(n * 604800);
+                time += (long) (n * 604800);
                 break;
             case 3:
-                time += (long)(n * 2678400);
+                time += (long) (n * 2678400);
                 break;
             case 4:
-                time += (long)(n * 31536000);
+                time += (long) (n * 31536000);
                 break;
             case 5:
-                time += (long)(n * 3600);
+                time += (long) (n * 3600);
                 break;
             case 6:
-                time += (long)(n * 60);
+                time += (long) (n * 60);
                 break;
             case 7:
-                time += (long)n;
+                time += (long) n;
         }
 
         Date result = new Date();
@@ -279,10 +280,10 @@ public class DateKit {
         long beginTime = begin.getTime() / 1000L;
         long endTime = end.getTime() / 1000L;
         long tmp = 0L;
-        if(endTime == beginTime) {
+        if (endTime == beginTime) {
             return 0;
         } else {
-            if(endTime < beginTime) {
+            if (endTime < beginTime) {
                 tmp = beginTime;
                 beginTime = endTime;
                 endTime = tmp;
@@ -290,7 +291,7 @@ public class DateKit {
 
             long intervalTime = endTime - beginTime;
             long result = 0L;
-            switch(interval) {
+            switch (interval) {
                 case 1:
                     result = intervalTime / 86400L;
                     break;
@@ -313,11 +314,11 @@ public class DateKit {
                     result = intervalTime / 1L;
             }
 
-            if(tmp > 0L) {
+            if (tmp > 0L) {
                 result = 0L - result;
             }
 
-            return (int)result;
+            return (int) result;
         }
     }
 
@@ -331,13 +332,13 @@ public class DateKit {
     }
 
     public static String dateFormatRss(Date date) {
-        return date != null?dateFormat(date, "E, d MMM yyyy H:mm:ss") + " GMT":"";
+        return date != null ? dateFormat(date, "E, d MMM yyyy H:mm:ss") + " GMT" : "";
     }
 
     public static boolean betweenStartDateAndEndDate(Date startDate, Date endDate) {
         boolean bool = false;
         Date curDate = new Date();
-        if(curDate.after(startDate) && curDate.before(dateAdd(1, endDate, 1))) {
+        if (curDate.after(startDate) && curDate.before(dateAdd(1, endDate, 1))) {
             bool = true;
         }
 
@@ -347,7 +348,7 @@ public class DateKit {
     public static boolean nowDateBetweenStartDateAndEndDate(Date startDate, Date endDate) {
         boolean bool = false;
         Date curDate = new Date();
-        if(curDate.after(startDate) && curDate.before(endDate)) {
+        if (curDate.after(startDate) && curDate.before(endDate)) {
             bool = true;
         }
 
@@ -357,7 +358,7 @@ public class DateKit {
     public static boolean nowDateAfterDate(Date date) {
         boolean bool = false;
         Date curDate = new Date();
-        if(curDate.after(date)) {
+        if (curDate.after(date)) {
             bool = true;
         }
 
@@ -366,10 +367,10 @@ public class DateKit {
 
     public static int getBetweenTodaysStartDateAndEndDate(Date startDate, Date endDate) {
         byte betweentoday = 0;
-        if(startDate == null) {
+        if (startDate == null) {
             return betweentoday;
         } else {
-            if(endDate == null) {
+            if (endDate == null) {
                 Calendar calendar = Calendar.getInstance();
                 String year = (new Integer(calendar.get(1))).toString();
                 String month = (new Integer(calendar.get(2) + 1)).toString();
@@ -385,10 +386,10 @@ public class DateKit {
             }
 
             int betweentoday1;
-            if(endDate.after(startDate)) {
-                betweentoday1 = (int)((endDate.getTime() - startDate.getTime()) / 86400000L);
+            if (endDate.after(startDate)) {
+                betweentoday1 = (int) ((endDate.getTime() - startDate.getTime()) / 86400000L);
             } else {
-                betweentoday1 = (int)((startDate.getTime() - endDate.getTime()) / 86400000L);
+                betweentoday1 = (int) ((startDate.getTime() - endDate.getTime()) / 86400000L);
             }
 
             return betweentoday1;
@@ -405,43 +406,43 @@ public class DateKit {
         int day = time.get(5);
         int month = time.get(2) + 1;
         int year = time.get(1);
-        if(format != 14) {
-            if(year >= 2000) {
+        if (format != 14) {
+            if (year >= 2000) {
                 year -= 2000;
             } else {
                 year -= 1900;
             }
         }
 
-        if(format >= 2) {
-            if(format == 14) {
+        if (format >= 2) {
+            if (format == 14) {
                 cTime.append(year);
             } else {
                 cTime.append(getFormatTime(year, 2));
             }
         }
 
-        if(format >= 4) {
+        if (format >= 4) {
             cTime.append(getFormatTime(month, 2));
         }
 
-        if(format >= 6) {
+        if (format >= 6) {
             cTime.append(getFormatTime(day, 2));
         }
 
-        if(format >= 8) {
+        if (format >= 8) {
             cTime.append(getFormatTime(hour, 2));
         }
 
-        if(format >= 10) {
+        if (format >= 10) {
             cTime.append(getFormatTime(minute, 2));
         }
 
-        if(format >= 12) {
+        if (format >= 12) {
             cTime.append(getFormatTime(second, 2));
         }
 
-        if(format >= 15) {
+        if (format >= 15) {
             cTime.append(getFormatTime(miltime, 3));
         }
 
@@ -451,10 +452,10 @@ public class DateKit {
     private static String getFormatTime(int time, int format) {
         StringBuffer numm = new StringBuffer();
         int length = String.valueOf(time).length();
-        if(format < length) {
+        if (format < length) {
             return null;
         } else {
-            for(int i = 0; i < format - length; ++i) {
+            for (int i = 0; i < format - length; ++i) {
                 numm.append("0");
             }
 
@@ -464,11 +465,11 @@ public class DateKit {
     }
 
     public static int getUserAge(Date birthday) {
-        if(birthday == null) {
+        if (birthday == null) {
             return 0;
         } else {
             Calendar cal = Calendar.getInstance();
-            if(cal.before(birthday)) {
+            if (cal.before(birthday)) {
                 return 0;
             } else {
                 int yearNow = cal.get(1);
@@ -480,11 +481,11 @@ public class DateKit {
     }
 
     public static Date getDateByUnixTime(int unixTime) {
-        return new Date((long)unixTime * 1000L);
+        return new Date((long) unixTime * 1000L);
     }
 
     public static long getUnixTimeLong() {
-        return (long)getUnixTimeByDate(new Date());
+        return (long) getUnixTimeByDate(new Date());
     }
 
     public static int getCurrentUnixTime() {
@@ -492,7 +493,7 @@ public class DateKit {
     }
 
     public static int getUnixTimeByDate(Date date) {
-        return (int)(date.getTime() / 1000L);
+        return (int) (date.getTime() / 1000L);
     }
 
     public static long getUnixTimeLong(Date date) {
@@ -514,7 +515,7 @@ public class DateKit {
     }
 
     public static Date nextDay(Date date) {
-        Date newDate = (Date)date.clone();
+        Date newDate = (Date) date.clone();
         long time = newDate.getTime() / 1000L + 86400L;
         newDate.setTime(time * 1000L);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -550,7 +551,7 @@ public class DateKit {
     }
 
     public static Date getWeekAgo(Date date) {
-        Date newDate = (Date)date.clone();
+        Date newDate = (Date) date.clone();
         long time = newDate.getTime() / 1000L - 604800L;
         newDate.setTime(time * 1000L);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -575,7 +576,7 @@ public class DateKit {
     }
 
     public static Date yesterday(Date date) {
-        Date newDate = (Date)date.clone();
+        Date newDate = (Date) date.clone();
         long time = newDate.getTime() / 1000L - 86400L;
         newDate.setTime(time * 1000L);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -612,7 +613,7 @@ public class DateKit {
     public static long getSpecifyTimeSec(long time, int range) {
         Date date = new Date((time * 1000L + 28800000L) / 86400000L * 86400000L - 28800000L);
         long zeroTime = date.getTime() / 1000L;
-        long specifyTime = (long)(range * 24 * 3600);
+        long specifyTime = (long) (range * 24 * 3600);
         return zeroTime + specifyTime;
     }
 
@@ -623,13 +624,13 @@ public class DateKit {
 
     public static Date convertToDate(String input) {
         Date date = null;
-        if(null == input) {
+        if (null == input) {
             return null;
         } else {
             Iterator var2 = dateFormats.iterator();
 
-            while(var2.hasNext()) {
-                SimpleDateFormat format = (SimpleDateFormat)var2.next();
+            while (var2.hasNext()) {
+                SimpleDateFormat format = (SimpleDateFormat) var2.next();
 
                 try {
                     format.setLenient(false);
@@ -638,7 +639,7 @@ public class DateKit {
                     ;
                 }
 
-                if(date != null) {
+                if (date != null) {
                     break;
                 }
             }

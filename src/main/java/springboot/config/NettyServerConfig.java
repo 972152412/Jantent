@@ -4,8 +4,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * @author tangj
- * @date 2018/4/12 22:36
+ * @author caolihui
+ * @date 2018/12/12 22:36
  */
 @Component
 @ConfigurationProperties(prefix = "nettyserver")

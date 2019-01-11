@@ -17,8 +17,8 @@ import javax.mail.internet.MimeMessage;
 import java.io.File;
 
 /**
- * @author janti
- * @date 2018/5/3 22:07
+ * @author caolihui
+ * @date 2018/12/13 22:07
  */
 @Component
 public class MailServiceImpl implements IMailService {
@@ -41,7 +41,7 @@ public class MailServiceImpl implements IMailService {
      * @param content
      */
     @Override
-    public void sendSimpleEmail(String to,String subject,String content) {
+    public void sendSimpleEmail(String to, String subject, String content) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(mailFrom);
         message.setTo(to);
@@ -62,16 +62,17 @@ public class MailServiceImpl implements IMailService {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         try {
             //true表示需要创建一个multipart message
-            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,true);
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
             helper.setFrom(mailFrom);
             helper.setTo(to);
             helper.setSubject(subject);
-            helper.setText(content,true);
+            helper.setText(content, true);
             mailSender.send(mimeMessage);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
     }
+
     /**
      * 发送带附件的邮件
      *
@@ -84,19 +85,19 @@ public class MailServiceImpl implements IMailService {
     public void sendFileMail(String to, String subject, String content, String filepath) {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         try {
-            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,true);
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
             helper.setFrom(mailFrom);
             helper.setTo(to);
             helper.setSubject(subject);
-            helper.setText(content,true);
+            helper.setText(content, true);
 
             FileSystemResource file = new FileSystemResource(new File(filepath));
             String fileName = filepath.substring(filepath.lastIndexOf(File.separator));
-            helper.addAttachment(fileName,file);
+            helper.addAttachment(fileName, file);
 
             mailSender.send(mimeMessage);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -6,8 +6,8 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * Gson转换工具
  *
- * @author tangj
- * @date 2018/1/23 22:48
+ * @author caolihui
+ * @date 2018/12/23 22:48
  */
 public class GsonUtils {
     private static final Gson gson = new Gson();

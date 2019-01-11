@@ -38,8 +38,8 @@ import java.util.List;
 /**
  * 首页控制
  *
- * @author tangj
- * @date 2018/2/17 9:47
+ * @author caolihui
+ * @date 2018/12/17 9:47
  */
 @Controller
 public class IndexController extends AbstractController {

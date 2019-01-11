@@ -31,8 +31,8 @@ import java.util.List;
 /**
  * 管理页面首页管理
  *
- * @author tangj
- * @date 2018/1/23 11:39
+ * @author caolihui
+ * @date 2019/1/3 11:39
  */
 @Controller("adminIndexController")
 @RequestMapping("/admin")
@@ -73,13 +73,6 @@ public class IndexController extends AbstractController {
     @GetMapping(value = "profile")
     public String profile() {
         return "admin/profile";
-    }
-
-    @GetMapping(value = "logout")
-    public String logout(HttpSession session) {
-        // 销毁session
-        session.invalidate();
-        return "admin/login";
     }
 
     @PostMapping(value = "/profile")

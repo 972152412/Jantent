@@ -3,10 +3,10 @@ package springboot.modal.vo;
 import java.io.Serializable;
 
 /**
- * @author tangj
- * @date 2018/1/21 11:15
+ * @author caolihui
+ * @date 2018/12/21 11:15
  */
-public class MetaVo implements Serializable{
+public class MetaVo implements Serializable {
 
     /**
      * 项目主键

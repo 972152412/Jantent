@@ -9,11 +9,11 @@ import springboot.util.MyUtils;
 import javax.annotation.Resource;
 
 /**
- * @author tangj
- * @date 2018/1/22 20:50
+ * @author caolihui
+ * @date 2018/12/16 20:50
  */
 @Component
-public class WebMvcConfig extends WebMvcConfigurerAdapter{
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Resource
     private BaseInterceptor baseInterceptor;
 
@@ -24,7 +24,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter{
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/upload/**").addResourceLocations("file:"+ MyUtils.getUploadFilePath()+"upload/");
+        registry.addResourceHandler("/upload/**").addResourceLocations("file:" + MyUtils.getUploadFilePath() + "upload/");
         super.addResourceHandlers(registry);
     }
 }

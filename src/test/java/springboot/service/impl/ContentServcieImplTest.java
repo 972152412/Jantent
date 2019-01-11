@@ -12,8 +12,8 @@ import springboot.service.IContentService;
 import static org.junit.Assert.*;
 
 /**
- * @author tangj
- * @date 2018/5/13 17:12
+ * @author caolihui
+ * @date 2018/12/13 17:12
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -24,8 +24,8 @@ public class ContentServcieImplTest {
 
 
     @Test
-    public void  testConten(){
-        PageInfo<ContentVo> contentVoPageInfo =  contentService.getContents(1,5);
+    public void testConten() {
+        PageInfo<ContentVo> contentVoPageInfo = contentService.getContents(1, 5);
         System.out.println(contentVoPageInfo);
     }
 }

@@ -3,10 +3,10 @@ package springboot.modal.vo;
 import java.io.Serializable;
 
 /**
- * @author tangj
- * @date 2018/1/21 11:10
+ * @author caolihui
+ * @date 2018/12/21 11:10
  */
-public class CommentVo implements Serializable{
+public class CommentVo implements Serializable {
     /**
      * comment表主键
      */

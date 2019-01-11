@@ -33,7 +33,7 @@ public class OptionServiceImpl implements IOptionService {
         optionVo.setName(name);
         optionVo.setValue(value);
         optionVo = optionalDao.selectByPrimaryKey(name);
-        if ( optionVo == null) {
+        if (optionVo == null) {
             optionVo = new OptionVo();
             optionVo.setName(name);
             optionVo.setValue(value);

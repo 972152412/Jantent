@@ -26,8 +26,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * @author tangj
- * @date 2018/5/12 19:57
+ * @author caolihui
+ * @date 2018/12/12 19:57
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -36,7 +36,7 @@ public class RedisServiceTest {
     private RedisTemplate redisTemplate;
 
     @Resource
-    private ValueOperations<String,Object> valueOperations;
+    private ValueOperations<String, Object> valueOperations;
 
     @Resource
     private TemplateEngine templateEngine;
@@ -51,13 +51,13 @@ public class RedisServiceTest {
     private IMetaService metaService;
 
     @Test
-    public void test(){
+    public void test() {
         Context context = new Context();
         PageInfo<ContentVo> articles = contentService.getContents(1, 10);
         List<MetaDto> categories = metaService.getMetaList(Types.CATEGORY.getType(), null, WebConst.MAX_POSTS);
         context.setVariable("categories", categories);
         context.setVariable("articles", articles);
-        String html = templateEngine.process("themes/jantent/index",context);
+        String html = templateEngine.process("themes/jantent/index", context);
         System.out.println(html);
     }
 }

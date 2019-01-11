@@ -8,8 +8,8 @@ import springboot.modal.vo.UserVoExample;
 import java.util.List;
 
 /**
- * @author tangj
- * @date 2018/1/21 14:59
+ * @author caolihui
+ * @date 2018/12/23 14:59
  */
 @Component
 public interface UserVoMapper {
