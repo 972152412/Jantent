@@ -41,7 +41,7 @@ public interface ISiteService {
     CommentVo getComment(Integer coid);
 
     /**
-     * 系统备份
+     * 文件备份
      *
      * @param bk_type
      * @param bk_path
@@ -50,6 +50,16 @@ public interface ISiteService {
      * @throws Exception
      */
     BackResponseBo backup(String bk_type, String bk_path, String fmt) throws Exception;
+
+    /**
+     * 导出数据库SQL
+     *
+     * @param bk_type
+     * @param yyyyMMddHHmm
+     * @return
+     * @throws Exception
+     */
+    BackResponseBo export(String bk_type, String yyyyMMddHHmm) throws Exception;
 
     /**
      * 获取后台统计数据
@@ -74,4 +84,5 @@ public interface ISiteService {
      * @return
      */
     List<MetaDto> metas(String type, String orderBy, int limit);
+
 }

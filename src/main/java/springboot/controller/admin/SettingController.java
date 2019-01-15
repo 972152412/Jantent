@@ -108,6 +108,21 @@ public class SettingController extends AbstractController {
         }
     }
 
+    @PostMapping(value = "export")
+    @ResponseBody
+    @Transactional(rollbackFor = TipException.class)
+    public RestResponseBo export(@RequestParam String bk_type, HttpServletRequest request) {
+        try {
+            BackResponseBo backResponseBo = siteService.export(bk_type, "yyyyMMddHHmm");
+            logService.insertLog(LogActions.SYS_BACKUP.getAction(), null, request.getRemoteAddr(), this.getUid(request));
+            return RestResponseBo.ok(backResponseBo);
+
+        } catch (Exception e) {
+            String msg = "导出失败";
+            return ExceptionHelper.handlerException(logger, msg, e);
+        }
+    }
+
     @PostMapping(value = "advanced")
     @ResponseBody
     public RestResponseBo doAdvanced(@RequestParam String cache_key, @RequestParam String block_ips) {

@@ -103,8 +103,14 @@ public class SiteServiceImpl implements ISiteService {
             backResponseBo.setAttachPath(attackPath);
             backResponseBo.setThemePath(themesPath);
         }
+        return backResponseBo;
+    }
+
+    @Override
+    public BackResponseBo export(String bk_type, String fmt) throws Exception {
+        BackResponseBo backResponseBo = new BackResponseBo();
         if (bk_type.equals("db")) {
-            String bkAttachDir = MyUtils.getUploadFilePath() + "upload/";
+            String bkAttachDir = MyUtils.getUploadFilePath() + "upload";
             if (!(new File(bkAttachDir)).isDirectory()) {
                 File file = new File(bkAttachDir);
                 if (!file.exists()) {
@@ -135,7 +141,7 @@ public class SiteServiceImpl implements ISiteService {
                 public void run() {
                     new File(zip).delete();
                 }
-            }, 10 * 1000);
+            }, 60 * 60 * 1000);
         }
         return backResponseBo;
     }
