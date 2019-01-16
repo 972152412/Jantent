@@ -134,7 +134,7 @@ public class SettingController extends AbstractController {
                 cache.del(cache_key);
             }
         }
-        // 要过过滤的黑名单列表
+        // 要过滤的黑名单列表
         if (StringUtils.isNotBlank(block_ips)) {
             optionService.insertOption(Types.BLOCK_IPS.getType(), block_ips);
             WebConst.BLOCK_IPS.addAll(Arrays.asList(block_ips.split(",")));

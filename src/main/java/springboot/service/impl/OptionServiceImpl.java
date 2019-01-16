@@ -28,11 +28,7 @@ public class OptionServiceImpl implements IOptionService {
     @Override
     public void insertOption(String name, String value) {
         LOGGER.debug("Enter insertOption method:name={},value={}", name, value);
-        OptionVo optionVo = new OptionVo();
-
-        optionVo.setName(name);
-        optionVo.setValue(value);
-        optionVo = optionalDao.selectByPrimaryKey(name);
+        OptionVo optionVo = optionalDao.selectByPrimaryKey(name);
         if (optionVo == null) {
             optionVo = new OptionVo();
             optionVo.setName(name);
@@ -61,6 +57,6 @@ public class OptionServiceImpl implements IOptionService {
 
     @Override
     public OptionVo getOptionByName(String name) {
-        return null;
+        return optionalDao.selectByPrimaryKey(name);
     }
 }

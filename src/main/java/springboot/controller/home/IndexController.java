@@ -21,6 +21,7 @@ import springboot.modal.bo.RestResponseBo;
 import springboot.modal.vo.CommentVo;
 import springboot.modal.vo.ContentVo;
 import springboot.modal.vo.MetaVo;
+import springboot.modal.vo.OptionVo;
 import springboot.service.*;
 import springboot.util.IpUtil;
 import springboot.util.MyUtils;
@@ -33,6 +34,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -57,6 +59,8 @@ public class IndexController extends AbstractController {
     @Resource
     private ISiteService siteService;
 
+    @Resource
+    private IOptionService optionService;
 
     /**
      * 博客首页
@@ -80,6 +84,12 @@ public class IndexController extends AbstractController {
      */
     @GetMapping(value = "page/{p}")
     public String index(HttpServletRequest request, @PathVariable int p, @RequestParam(value = "limit", defaultValue = "5") int limit) {
+        // 要过滤的黑名单列表
+        OptionVo optionVo = optionService.getOptionByName(Types.BLOCK_IPS.getType());
+        if (optionVo != null) {
+            WebConst.BLOCK_IPS.addAll(Arrays.asList(optionVo.getValue().split(",")));
+        }
+
         // 开启thymeleaf缓存，加快访问速度
         p = p < 0 || p > WebConst.MAX_PAGE ? 1 : p;
         PageInfo<ContentVo> articles = contentService.getContents(p, limit);
