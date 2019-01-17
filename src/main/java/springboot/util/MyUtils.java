@@ -181,7 +181,7 @@ public class MyUtils {
             if (dataSource == null) {
                 DriverManagerDataSource managerDataSource = new DriverManagerDataSource();
                 managerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-                managerDataSource.setUrl("jdbc:mysql://127.0.0.1:3306/jantent?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true");
+                managerDataSource.setUrl("jdbc:mysql://127.0.0.1:3306/shared_blog?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true");
                 managerDataSource.setUsername("root");
                 managerDataSource.setPassword("");
                 dataSource = managerDataSource;

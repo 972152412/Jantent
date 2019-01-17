@@ -21,7 +21,7 @@
 <div class="log">
     <div class="am-g">
         <div class="am-u-lg-3 am-u-md-6 am-u-sm-8 am-u-sm-centered log-content">
-            <h1 class="log-title am-animation-slide-top">登录Jantent</h1>
+            <h1 class="log-title am-animation-slide-top">登录SharedBlog</h1>
             <br>
             <form class="am-form" id="loginForm">
 
@@ -32,14 +32,14 @@
                 </div>
                 <br>
                 <div class="am-input-group am-animation-slide-left log-animation-delay">
-                    <input  class="am-form-field am-radius log-input" placeholder="密码" name="password" type="password"/>
+                    <input class="am-form-field am-radius log-input" placeholder="密码" name="password" type="password"/>
                     <span class="am-input-group-label log-icon am-radius"><i
                             class="am-icon-lock am-icon-sm am-icon-fw"></i></span>
                 </div>
                 <br>
                 <button type="button"
                         class="am-btn am-btn-primary am-btn-block am-btn-lg am-radius am-animation-slide-bottom log-animation-delay"
-                 onclick="checkForm()">
+                        onclick="checkForm()">
                     登&nbsp;录
                 </button>
             </form>
@@ -47,13 +47,14 @@
     </div>
 
     <footer class="log-footer">
-        © 2019 Jantent
+        © 2019 SharedBlog
     </footer>
 </div>
 
 <script type="text/javascript">
     /*<![CDATA[*/
     var tale = new $.tale();
+
     function checkForm() {
         tale.post({
             url: '/admin/login',
@@ -68,6 +69,7 @@
         });
         return false;
     }
+
     /*]]>*/
 </script>
 </body>
