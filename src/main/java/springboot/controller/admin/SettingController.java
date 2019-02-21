@@ -3,6 +3,7 @@ package springboot.controller.admin;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import springboot.modal.vo.OptionVo;
 import springboot.service.ILogService;
 import springboot.service.IOptionService;
 import springboot.service.ISiteService;
+import springboot.service.impl.RedisService;
 import springboot.util.GsonUtils;
 
 import javax.annotation.Resource;
@@ -44,6 +46,9 @@ public class SettingController extends AbstractController {
 
     @Resource
     private ISiteService siteService;
+
+    @Autowired
+    private RedisService redisService;
 
     /**
      * 起始页
@@ -128,11 +133,9 @@ public class SettingController extends AbstractController {
     public RestResponseBo doAdvanced(@RequestParam String cache_key, @RequestParam String block_ips) {
         // 清除缓存
         if (StringUtils.isNotBlank(cache_key)) {
-            if ("*".equals(cache_key)) {
-                cache.clean();
-            } else {
-                cache.del(cache_key);
-            }
+            String[] keys = cache_key.split(",");
+            redisService.deleteKey(keys);
+            cache.del(cache_key);
         }
         // 要过滤的黑名单列表
         if (StringUtils.isNotBlank(block_ips)) {
