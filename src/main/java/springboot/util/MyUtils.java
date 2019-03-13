@@ -183,7 +183,7 @@ public class MyUtils {
                 managerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
                 managerDataSource.setUrl("jdbc:mysql://127.0.0.1:3306/shared_blog?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true");
                 managerDataSource.setUsername("root");
-                managerDataSource.setPassword("");
+                managerDataSource.setPassword("123456");
                 dataSource = managerDataSource;
             }
 

@@ -54,7 +54,7 @@ public class ZipUtils {
         byte[] buffer = new byte[1024];
         FileOutputStream fos = new FileOutputStream(zipPath);
         ZipOutputStream zos = new ZipOutputStream(fos);
-        ZipEntry ze = new ZipEntry("spy.log");
+        ZipEntry ze = new ZipEntry("blog.sql");
         zos.putNextEntry(ze);
         FileInputStream in = new FileInputStream(filePath);
         int len;
