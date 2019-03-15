@@ -17,7 +17,7 @@ public interface IContentService {
     void publish(ContentVo contents);
 
     /**
-     * 查询文章返回对跳数据
+     * 文章信息查询
      *
      * @param p
      * @param limit
@@ -52,7 +52,7 @@ public interface IContentService {
     PageInfo<ContentVo> getArticles(Integer mid, int page, int limit);
 
     /**
-     * 搜索、分页
+     * 文章搜索、分页
      *
      * @param keyword keyword
      * @param page    page

@@ -20,5 +20,11 @@ public interface IOptionService {
      */
     void saveOptions(Map<String, String> options);
 
+    /**
+     * 获取网站配置
+     *
+     * @param name
+     * @return
+     */
     OptionVo getOptionByName(String name);
 }
